@@ -5,6 +5,7 @@ Packages/** linguist-vendored
 ProjectSettings/** linguist-generated
 Planning linguist-detectable=false
 
+*.wlt linguist-detectable=false
 *.wl linguist-detectable=false
 *.wls linguist-detectable=false
 *.nb linguist-detectable=false

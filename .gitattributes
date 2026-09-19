@@ -1,5 +1,7 @@
 *.wl linguist-detectable=false
 *.wls linguist-detectable=false
 *.nb linguist-detectable=false
+*.m linguist-detectable=false
 
+Planning linguist-detectable=false
 Packages/** linguist-vendored

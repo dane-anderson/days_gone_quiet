@@ -1,7 +1,11 @@
+Assets/**/*.cs linguist-language=C#
+Assets/**/*.cs linguist-detectable=true
+
+Packages/** linguist-vendored
+ProjectSettings/** linguist-generated
+Planning linguist-detectable=false
+
 *.wl linguist-detectable=false
 *.wls linguist-detectable=false
 *.nb linguist-detectable=false
 *.m linguist-detectable=false
-
-Planning linguist-detectable=false
-Packages/** linguist-vendored

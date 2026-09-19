@@ -1,0 +1,25 @@
+# Unity generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+
+# IDE / OS
+.vscode/
+.DS_Store
+*.csproj
+*.sln
+*.slnx
+*.user
+
+# Python / ML training
+.venv/
+__pycache__/
+*.pyc
+results/
+
+# Unity crash files
+sysinfo.txt

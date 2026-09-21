@@ -2,63 +2,112 @@
 
 A small reinforcement learning survival project built in Unity.
 
-The idea is simple:
+The idea is still simple:
 
 > **Rick learns how to survive.**
 
-Instead of scripting Rick to automatically run away from danger, Rick is an **RL agent**. He observes the world, takes actions, gets rewarded or punished, and gradually learns what keeps him alive.
+This started with one little arena, one Rick, and one Walker.
+
+Now Rick is learning inside **Grayhaven Prison Yard** — a worn-down place with chain-link fences, guard towers, cracked concrete, dead weeds, abandoned yard stuff, and a road leading toward whatever comes next.
+
+This got a lot more real today. 🥹
+
+![Grayhaven Prison Yard concept](Assets/Art/Environment/PrisonYard/PrisonYardConcept.png)
+
+*The atmosphere we are building toward.*
 
 ---
 
-## 🎮 Current Setup
+## 🧠 How Rick Learns
 
-Right now the world is intentionally simple:
+Rick is not simply told:
 
-- **Rick** = reinforcement learning agent
-- **Walker** = threat that chases Rick
-- **Unity** = simulation environment
-- **ML-Agents** = reinforcement learning framework
-- **C#** = game and agent logic
-- **PPO** = training algorithm
+> “If the Walker gets close, run away.”
 
-Rick can move around a 3D arena while the Walker hunts him.
+He observes where he is and where the Walker is, chooses how to move, and learns from what happens next.
 
-If the Walker catches Rick:
-
-- Rick receives a negative reward
-- the episode ends
-- the world resets
+- surviving earns a reward
+- getting caught earns a penalty
+- leaving the yard earns a penalty
+- every episode resets Rick and the Walker
 - Rick tries again
 
 And again.
 
 And again.
 
-Until he hopefully gets smarter. 😅
+Some attempts look promising.
+
+Some look like Rick completely forgot what a Walker is. 😅
+
+That is part of the experiment.
 
 ---
 
-## 🧠 The Goal
+## 🧪 Rick’s Learning Lab
 
-The first milestone is:
+One of my favorite additions is **Rick’s Learning Lab** inside Unity.
 
-**Teach Rick to survive one Walker.**
+My partner and I can change things like:
 
-After that, the environment can become progressively harder:
+- Rick’s speed
+- the Walker’s speed
+- rewards and penalties
+- how close the Walker can spawn
+- how long each episode lasts
+- how often Rick makes a decision
+- how fast training runs
 
-- multiple Walkers
-- obstacles
-- safe zones
-- stamina
-- noise
-- hiding
-- supplies
-- weapons
-- larger environments
-- groups of survivors
-- more complex reward systems
+That lets us change one thing at a time and see whether it helps or hurts Rick’s learning.
 
-Eventually, the goal is to move from a simple training arena into a much richer 3D survival world.
+The Learning Lab also has a button that opens the **Days Gone Quiet training dashboard**, where we can watch Rick’s rewards and progress in TensorBoard.
+
+---
+
+## 🎥 Watching the Yard
+
+Open `Assets/Scenes/PrisonYard.unity` and press Play.
+
+The camera has five views:
+
+1. Full Yard
+2. Front Gate
+3. Courtyard
+4. Guard Tower
+5. Follow Rick
+
+Press the number keys while the game is running to switch between them.
+
+To see the learning charts, use **Days Gone Quiet → Open Training Dashboard** in Unity. You can also open the dashboard from Rick’s Learning Lab in the Inspector.
+
+> **Tiny but important:** Pressing Play lets Rick use the trained brain already saved in the project. To make him continue learning, the Python ML-Agents trainer needs to be connected before pressing Play.
+
+---
+
+## 🚧 Project Status
+
+Still early. But not nearly as early as it was yesterday.
+
+Current progress:
+
+- [x] Rick is a working reinforcement learning agent
+- [x] Walker chase behavior is working
+- [x] collisions and episode resets are working
+- [x] real PPO training is connected
+- [x] first trained Rick brain added
+- [x] first visual pass for Rick and the Walker
+- [x] Grayhaven Prison Yard built
+- [x] prison buildings, fences, guard towers, vegetation, and yard details added
+- [x] five camera views added
+- [x] Rick’s Learning Lab added
+- [x] TensorBoard dashboard launcher added inside Unity
+- [ ] keep experimenting with rewards and difficulty
+- [ ] teach Rick to reliably survive one Walker
+- [ ] add more Walkers
+- [ ] add hiding, noise, stamina, supplies, and safe areas
+- [ ] improve the characters and animation
+- [ ] build roads leading toward other towns
+- [ ] make the world bigger, stranger, and more dangerous
 
 ---
 
@@ -70,64 +119,33 @@ Eventually, the goal is to move from a simple training arena into a much richer 
 - Python
 - PyTorch
 - PPO reinforcement learning
-
----
-
-## 🚧 Project Status
-
-**Very early development**
-
-Current progress:
-
-- [x] Unity project created
-- [x] 3D training arena
-- [x] Rick agent created
-- [x] Walker chase behavior
-- [x] Reward / episode reset system
-- [x] ML-Agents trainer connected
-- [x] First RL training run
-- [ ] Improve Walker collision behavior
-- [ ] Improve Rick's reward function
-- [ ] Train Rick to reliably evade one Walker
-- [ ] Replace placeholder capsules with actual characters
-- [ ] Build a proper survival environment
-- [ ] Add more Walkers
-- [ ] Make it look awesome
-
----
-
-## 🤖 Why Reinforcement Learning?
-
-The fun part of this project is that Rick is not simply told:
-
-> “If Walker is close, run away.”
-
-Instead, Rick receives observations and consequences.
-
-He has to discover useful behavior through experience.
-
-That means some of the early training may look... questionable.
-
-Rick may:
-
-- run directly into the Walker
-- spin around
-- hide in a corner
-- wander aimlessly
-- discover something unexpectedly clever
-
-That's part of the experiment.
+- TensorBoard
 
 ---
 
 ## 🌎 Long-Term Vision
 
-The eventual idea is a 3D survival environment where agents learn how to navigate a dangerous world filled with Walkers, obstacles, resources, and other survivors.
+The dream is a larger survival world where learning agents have to deal with Walkers, obstacles, resources, other survivors, and choices that become more complicated over time.
 
-For now, though:
+The prison yard is the first real location.
 
-**One Rick.  
-One Walker.  
-One very confused neural network.**
+Later there can be roads.
+
+Then towns.
+
+Then more Walkers.
+
+Then we see what Rick actually learned.
+
+For now:
+
+**One Rick.<br>
+One Walker.<br>
+One prison yard.<br>
+One neural network with a lot to learn.**
 
 🧟‍♂️
+
+---
+
+*Days Gone Quiet is an independent learning project inspired by zombie-survival stories.*

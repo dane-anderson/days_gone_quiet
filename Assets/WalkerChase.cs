@@ -1,33 +1,43 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class WalkerChase : MonoBehaviour
 {
     public Transform target;
     public float moveSpeed = 2f;
 
     private Rigidbody rb;
+    private RLExperimentControls experimentControls;
 
-    void Start()
+    public void SetExperimentControls(RLExperimentControls controls)
+    {
+        experimentControls = controls;
+    }
+
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        if (experimentControls == null)
+            experimentControls = FindAnyObjectByType<RLExperimentControls>();
     }
 
     void FixedUpdate()
     {
-        if (target == null)
+        if (target == null || rb == null)
             return;
 
         Vector3 direction = target.position - transform.position;
         direction.y = 0f;
 
-        float distance = direction.magnitude;
-
-        // Stop before Walker overlaps Rick
-        if (distance < 1.2f)
+        if (direction.sqrMagnitude < 0.0001f)
             return;
 
-        Vector3 nextPosition =
-            rb.position + direction.normalized * moveSpeed * Time.fixedDeltaTime;
+        float currentMoveSpeed = experimentControls != null
+            ? experimentControls.WalkerMoveSpeed
+            : moveSpeed;
+
+        Vector3 nextPosition = rb.position +
+            direction.normalized * currentMoveSpeed * Time.fixedDeltaTime;
 
         rb.MovePosition(nextPosition);
     }

@@ -25,9 +25,10 @@ public static class PrisonYardV2Validator
             "Active scene is PrisonYard", scene.name);
 
         List<Collider> colliders = ComponentsInScene<Collider>(scene);
+        colliders.RemoveAll(c => c.GetComponentInParent<PrisonInteriorTour>() != null || c is CharacterController);
         List<Rigidbody> rigidbodies = ComponentsInScene<Rigidbody>(scene);
         report.Check(colliders.Count == ExpectedColliderCount,
-            $"Exactly {ExpectedColliderCount} colliders",
+            $"Exactly {ExpectedColliderCount} core yard colliders",
             $"{colliders.Count}: {DescribeComponents(colliders)}");
         report.Check(rigidbodies.Count == ExpectedRigidbodyCount,
             $"Exactly {ExpectedRigidbodyCount} rigidbodies",
@@ -158,8 +159,8 @@ public static class PrisonYardV2Validator
             "Main Camera has an enabled PrisonYardCameraViews controller");
 
         Array viewValues = Enum.GetValues(typeof(PrisonYardCameraViews.YardView));
-        report.Check(viewValues.Length == 5,
-            "Camera controller defines five views", viewValues.Length.ToString());
+        report.Check(viewValues.Length == 8,
+            "Camera controller defines eight views", viewValues.Length.ToString());
         report.Check(HasAllViewMethods(),
             "Camera controller exposes all five view commands");
 

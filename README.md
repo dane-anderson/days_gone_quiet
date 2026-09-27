@@ -1,5 +1,19 @@
 # Days Gone Quiet 🧟‍♂️🌲
 
+## Current prison survival scene
+
+The current `PrisonYard` scene adds a roofed, connected cellblock, upstairs cells, manual exploration, restrained walkers, operable doors, and Negan with Lucille. Rick and Negan have separate `RickEscape` and `NeganCombat` learning policies; coordinated teamwork is future work.
+
+Open **Days Gone Quiet → World Control** for survivor, camera, door, simulation, and training controls. Number keys **1–8** select the yard, indoor, restrained-walker, and cutaway views. See [the survival controls](Assets/Survival/README.md) for the current setup.
+
+Earlier saved model snapshots are included in `Assets/Survival/Models/prison-duo-v1`, but neither is assigned in the saved scene. With no trainer connected and scripted preview disabled, the learners are idle until a compatible model is assigned. Training checkpoints and logs remain outside this repository; an ONNX model alone cannot resume PPO training. The exports do not establish reliable survival, combat skill, or teamwork.
+
+The sections below describe the original yard-only prototype and its learning lab.
+
+---
+
+## Original yard prototype
+
 A small reinforcement learning survival project built in Unity.
 
 The idea is still simple:

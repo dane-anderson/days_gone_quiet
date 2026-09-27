@@ -22,7 +22,7 @@ public class PrisonYardCameraViewsEditor : Editor
         EditorGUILayout.Space(10f);
         EditorGUILayout.LabelField("Prison Yard Views", EditorStyles.boldLabel);
         EditorGUILayout.HelpBox(
-            "Click a view below. In Play mode, press 1–5 to switch without stopping the game.",
+            "Click a view below. In Play mode, press 1–8 to switch without stopping the game.",
             MessageType.Info);
 
         using (new EditorGUILayout.HorizontalScope())
@@ -43,6 +43,17 @@ public class PrisonYardCameraViewsEditor : Editor
 
         if (GUILayout.Button("5  Follow Rick", GUILayout.Height(36f)))
             ApplyView(views, views.ShowFollowRick, "Follow Rick View");
+
+        using (new EditorGUILayout.HorizontalScope())
+        {
+            if (GUILayout.Button("6  Cellblock", GUILayout.Height(32f)))
+                ApplyView(views, views.ShowCellblock, "Cellblock View");
+            if (GUILayout.Button("7  Restrained Walkers", GUILayout.Height(32f)))
+                ApplyView(views, views.ShowRestrainedWalkers, "Restrained Walkers View");
+        }
+
+        if (GUILayout.Button("8  Cellblock Cutaway", GUILayout.Height(32f)))
+            ApplyView(views, views.ShowCellblockCutaway, "Cellblock Cutaway View");
 
         EditorGUILayout.Space(4f);
         EditorGUILayout.LabelField("Current view", Nicify(views.CurrentView));
@@ -150,7 +161,7 @@ public class PrisonYardCameraViewsEditor : Editor
         EditorUtility.SetDirty(camera);
         EditorSceneManager.MarkSceneDirty(camera.gameObject.scene);
         Selection.activeGameObject = camera.gameObject;
-        Debug.Log("Prison Yard camera views are ready. Select Main Camera or press 1–5 in Play mode.");
+        Debug.Log("Prison Yard camera views are ready. Select Main Camera or press 1–8 in Play mode.");
     }
 
     private static void ApplyView(PrisonYardCameraViews views, Action action, string undoName)

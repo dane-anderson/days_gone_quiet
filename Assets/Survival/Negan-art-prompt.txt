@@ -1,0 +1,10 @@
+Use case: stylized-concept.
+Asset type: transparent Unity game character sprite, realistic gritty survival-horror full-body character cutout.
+Primary request: Negan from The Walking Dead, recognizable mature male with short slicked-back salt-and-pepper hair and close salt-and-pepper beard, wearing a worn black leather biker jacket with silver zippers, dark red scarf, plain light gray shirt, charcoal trousers, brown belt and worn dark leather boots. Match an existing realistic detailed photographic Rick survivor sprite: natural proportions, meticulous worn leather and fabric texture, restrained desaturated cinematic coloring, soft warm key light, no stylization or cartoon outlines.
+Composition: one complete standing man only, centered upright, nearly frontal three-quarter stance, head through entire boots visible with 6 percent clear margin above head and below soles, tall portrait framing. Both arms relaxed down by his sides. His anatomical RIGHT hand, on viewer's LEFT, is closed in a loose grip beside his right hip, unobstructed and ready for a separately modeled bat to be placed in that hand. His left hand relaxed empty. Neutral alert expression, no dramatic action pose.
+Background: genuine transparent alpha, clean cutout edges including individual hair and clothing edges. No environment, no ground plane, no floor shadow, no vignette, no glow, no text, no watermark, no additional characters.
+Critical constraint: NO BAT, NO WEAPON, NO PROP in this image. The bat will be a separately animated 3D model in Unity. Right hand must remain empty and clearly visible.
+
+Generated using the built-in image_gen tool with transparent_background=true.
+Original: /Users/daneanderson/.codex/generated_images/01a0df1a-ea8a-7723-8da6-ad6fadc36ca9/exec-b86261d2-b16b-40b3-9dd9-143a6b8e3b3c.png
+Staged asset: Assets/Art/Characters/NeganSurvivor.png

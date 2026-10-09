@@ -1,28 +1,60 @@
-# Days Gone Quiet 🧟‍♂️🌲
+<div align="center">
 
-A small reinforcement learning survival project built in Unity.
+# DAYS GONE QUIET
+### Two minds. One unforgiving world.
 
-The idea is still simple:
+**UNITY · REINFORCEMENT LEARNING · SURVIVAL**
 
-> **Rick learns how to survive.**
+[**Enter Days Gone Quiet ↗**](https://aegis-sentinel-6u5m.onrender.com/#environment) &nbsp; · &nbsp; [**Training records ↗**](https://aegis-sentinel-6u5m.onrender.com/#runs) &nbsp; · &nbsp; [**Survival controls ↗**](Assets/Survival/README.md)
 
-This started with one little arena, one Rick, and one Walker.
+<a href="https://aegis-sentinel-6u5m.onrender.com/#environment">
+  <img src="Assets/Art/Environment/PrisonYard/PrisonYardConcept.png" alt="Grayhaven Prison Yard concept art: an abandoned prison in the world of Days Gone Quiet" width="100%">
+</a>
 
-Now Rick is learning inside **Grayhaven Prison Yard** — a worn-down place with chain-link fences, guard towers, cracked concrete, dead weeds, abandoned yard stuff, and a road leading toward whatever comes next.
+*Grayhaven Prison Yard concept art. The atmosphere we are building toward, not an in-engine screenshot.*
 
-Now the prison has an inside.
-
-And Rick has company: **Negan, Lucille, and a second brain with a lot to learn.**
-
-This got a lot more real today. 🥹
-
-![Grayhaven Prison Yard concept](Assets/Art/Environment/PrisonYard/PrisonYardConcept.png)
-
-*The atmosphere we are building toward.*
+</div>
 
 ---
 
-## 🧠 How Rick Learns
+## The world pushes back
+
+This started with one little arena, one Rick, and one Walker.
+
+Now Rick is learning inside **Grayhaven Prison Yard**: chain-link fences, guard towers, cracked concrete, dead weeds, and a road leading toward whatever comes next.
+
+The prison has an inside. The doors do not always hold. And Rick has company: **Negan, Lucille, and a second brain with a lot to learn.**
+
+Days Gone Quiet is an independent Unity reinforcement-learning project. The world supplies the obstacles. The agents observe, act, receive rewards, and try again.
+
+**The simulation is fictional. The learning is real.**
+
+## Something beyond the walls
+
+The prison is not the whole story.
+
+Days Gone Quiet sits within **Project Sentinel**, a research initiative under **[AEGIS Dynamics](https://aegis-sentinel-6u5m.onrender.com/)**. Here, the question is how to survive the next encounter. Somewhere above the experiment, the question is what those encounters teach.
+
+[**Follow the signals to Sentinel Command ↗**](https://aegis-sentinel-6u5m.onrender.com/#command)
+
+<sub>PROJECT SENTINEL / EXPERIMENTAL ENVIRONMENT 001 / DAYS GONE QUIET</sub>
+
+---
+
+## Meet the learners
+
+| Agent | Policy | Training objective |
+| :--- | :--- | :--- |
+| **Rick** | `RickEscape` | Survive and reach the prison interior when threatened outside. |
+| **Negan** | `NeganCombat` | Learn movement and timed attacks, with rewards for damaging and defeating simulated Walkers. |
+
+Two independent PPO policies. Separate rewards. The same unforgiving world.
+
+Coordinated teamwork is still a research question.
+
+---
+
+## Learning through trial and error
 
 Rick is not simply told:
 
@@ -48,18 +80,11 @@ Some look like Rick completely forgot what a Walker is. 😅
 
 That is part of the experiment.
 
-The new survival scene gives Rick and Negan separate jobs:
-
-- **RickEscape:** learn to survive and reach the prison interior when threatened outside.
-- **NeganCombat:** learn when to move, when to swing Lucille, and how to damage Walkers.
-
-They share the world, but each has its own policy and rewards. We can train Rick, Negan, or both at once.
-
-Getting them to work together is still ahead of us. Two brains in the same prison is the beginning. 🧠🧠
+We can train Rick, Negan, or both at once. Sharing the prison is the beginning; learning to coordinate is the next frontier.
 
 ---
 
-## 🏚️ Beyond the Yard
+## Inside Grayhaven
 
 The prison entrance now leads somewhere.
 
@@ -76,7 +101,8 @@ Negan's character art was generated with Codex's image generation tool, while Lu
 
 ---
 
-## 🧪 Rick’s Learning Lab
+<details>
+<summary><strong>Inside the tools: Rick’s Learning Lab</strong></summary>
 
 One of my favorite additions to the original yard experiment is **Rick’s Learning Lab** inside Unity.
 
@@ -94,9 +120,11 @@ That lets us change one thing at a time and see whether it helps or hurts Rick�
 
 The Learning Lab also has a button that opens the **Days Gone Quiet training dashboard**, where we can watch Rick’s rewards and progress in TensorBoard.
 
+</details>
+
 ---
 
-## 🎛️ World Control
+## World Control
 
 The new survival scene has its own dockable **World Control** panel.
 
@@ -116,9 +144,19 @@ See [the survival controls](Assets/Survival/README.md) for more detail.
 
 ---
 
-## 🎥 Watching the Prison
+## Enter the simulation
 
-Open `Assets/Scenes/PrisonYard.unity` and press Play.
+1. Clone this repository and add its project folder in **Unity Hub**.
+2. Use the editor version in [ProjectVersion.txt](ProjectSettings/ProjectVersion.txt), currently **6000.6.2f1**.
+3. Open `Assets/Scenes/PrisonYard.unity`.
+4. Open **Days Gone Quiet → World Control** and choose a trainer, compatible saved brain, or scripted preview.
+5. Press **Play**.
+
+| Mode | What you are watching |
+| :--- | :--- |
+| **Connected trainer** | New learning through the Python ML-Agents trainer. Connect it before pressing Play. |
+| **Saved brain** | Inference from a compatible ONNX export; no new training. |
+| **Scripted preview** | A demonstration of the mechanics, not evidence of learned behavior. |
 
 The camera has eight views:
 
@@ -145,7 +183,16 @@ Resuming PPO training also needs the original checkpoints, which remain outside 
 
 ---
 
-## 📖 Making Sense of Training
+## Reading the signals
+
+The public **[Sentinel Command dashboard](https://aegis-sentinel-6u5m.onrender.com/#runs)** presents a reviewed snapshot exported **October 9, 2026**: **3 selected runs, 6 policy records, and 938 original reward samples**.
+
+It is a snapshot, not a live training feed. Some records come from local experiments beyond the model exports committed here; exact source revisions for those runs were not recorded. The [source manifest](https://github.com/dane-anderson/aegis-sentinel/blob/main/public/data/research.json) records file hashes and limitations.
+
+**Reward is not a success percentage.** Rick and Negan have different objectives. Reliable escape, combat performance, cooperation, and transfer need direct evaluation across repeated scenarios.
+
+<details>
+<summary><strong>Local TensorBoard commentary workflow</strong></summary>
 
 Charts tell us a lot. Sometimes we also want someone to explain what changed in plain English.
 
@@ -155,11 +202,13 @@ The rundown separates reaching the training target from stopping early, describe
 
 This is a companion workflow in our local Codex workspace; its launcher and reporting tools are not included in this Unity repository.
 
+</details>
+
 ---
 
-## 🚧 Project Status
+## The experiment so far
 
-Still early. But not nearly as early as it was yesterday.
+The world and training foundation are in place. The next step is to measure what the agents can reliably do.
 
 Current progress:
 
@@ -180,6 +229,7 @@ Current progress:
 - [x] multiple active Walkers and breakable doors added
 - [x] World Control panel added
 - [x] earlier saved model snapshots included for evaluation
+- [x] public AEGIS research site and Sentinel Command snapshot published
 - [ ] keep experimenting with rewards and difficulty
 - [ ] teach Rick to reliably survive one Walker
 - [ ] evaluate escape and combat success directly
@@ -191,7 +241,7 @@ Current progress:
 
 ---
 
-## 🛠️ Built With
+## Built with
 
 - **Unity 6 + C#** — the world, gameplay, and custom editor tools
 - **Universal Render Pipeline (URP)** — rendering the prison environment
@@ -207,7 +257,7 @@ Custom Unity validation tools check the connected routes, doors, combat, camera 
 
 ---
 
-## 🌎 Long-Term Vision
+## Beyond the prison
 
 The dream is a larger survival world where learning agents have to deal with Walkers, obstacles, resources, other survivors, and choices that become more complicated over time.
 
@@ -232,4 +282,13 @@ Two neural networks with a lot to learn.**
 
 ---
 
-*Days Gone Quiet is an independent learning project inspired by zombie-survival stories.*
+<div align="center">
+
+**Beyond the walls, the experiment continues.**
+
+[Days Gone Quiet](https://aegis-sentinel-6u5m.onrender.com/#environment) &nbsp; · &nbsp; [Project Sentinel](https://aegis-sentinel-6u5m.onrender.com/#program) &nbsp; · &nbsp; [AEGIS Dynamics](https://aegis-sentinel-6u5m.onrender.com/)
+
+</div>
+
+*Days Gone Quiet is an independent learning project inspired by zombie-survival stories. AEGIS is the fictional parent organization in the project's narrative; Athena is its fictional Chief Intelligence Officer. Research claims remain tied to recorded evidence.*
+
